@@ -1515,15 +1515,38 @@
       });
 
       // Support channel link
-      // کانال ایتا
-document.getElementById("supportChannelBtn").addEventListener("click", () => {
-  if (window.Eitaa && window.Eitaa.WebApp) {
-    window.Eitaa.WebApp.openEitaaLink("https://eitaa.com/NiZAC_WorkSpace");
-  } else {
-    window.open("https://eitaa.com/NiZAC_WorkSpace", "_blank");
+function setupEitaaButton() {
+  const btn = document.getElementById("supportChannelBtn");
+  if (btn) {
+    // حذف event listener های قبلی
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    
+    newBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      console.log("دکمه کلیک شد!"); // برای دیباگ
+      
+      if (window.Eitaa && window.Eitaa.WebApp && window.Eitaa.WebApp.openEitaaLink) {
+        window.Eitaa.WebApp.openEitaaLink("https://eitaa.com/NiZAC_WorkSpace");
+      } else {
+        // Fallback برای مرورگر یا زمانی که کیت لود نشده
+        window.open("https://eitaa.com/NiZAC_WorkSpace", "_blank");
+      }
+    });
   }
-});
-if (window.Eitaa && window.Eitaa.WebApp) window.Eitaa.WebApp.ready();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupEitaaButton);
+} else {
+  setupEitaaButton();
+}
+if (window.Eitaa && window.Eitaa.WebApp) {
+  window.Eitaa.WebApp.ready();
+  console.log("کیت توسعه ایتا آماده است");
+}
 
       // ========================
       // WINDOW RESIZE HANDLER
