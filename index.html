@@ -1515,11 +1515,15 @@
       });
 
       // Support channel link
-      document
-        .getElementById("supportChannelBtn")
-        .addEventListener("click", () => {
-          openEitaaLink("https://eitaa.com/NiZAC_WorkSpace")
-        });
+      // کانال ایتا
+document.getElementById("supportChannelBtn").addEventListener("click", () => {
+  if (window.Eitaa && window.Eitaa.WebApp) {
+    window.Eitaa.WebApp.openEitaaLink("https://eitaa.com/NiZAC_WorkSpace");
+  } else {
+    window.open("https://eitaa.com/NiZAC_WorkSpace", "_blank");
+  }
+});
+if (window.Eitaa && window.Eitaa.WebApp) window.Eitaa.WebApp.ready();
 
       // ========================
       // WINDOW RESIZE HANDLER
