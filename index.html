@@ -560,28 +560,28 @@
       }
 
       .tips-card {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 30;
-        background: rgba(10, 10, 18, 0.75);
-        backdrop-filter: blur(14px);
-        border-radius: 16px;
-        padding: 12px 6px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        max-width: 90%;
-        width: auto;
-        min-width: 280px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        opacity: 0;
-        animation: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  background: rgba(10, 10, 18, 0.85);  /* ← کمی تیره‌تر برای وضوح بیشتر */
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 14px 20px;                  /* ← کمی بیشتر */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 92%;                          /* ← عرض ۹۲٪ صفحه (قبلاً auto بود) */
+  max-width: 600px;                    /* ← حداکثر عرض برای صفحه‌های بزرگ */
+  min-width: unset;                    /* ← حذف min-width قبلی */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: none;
       }
       .tips-card.show {
         opacity: 1;
@@ -663,16 +663,17 @@
 
       @media (max-width: 480px) {
         .tips-card {
-          padding: 10px 6px;
+          padding: 10px 14px;
           min-width: auto;
-          width: 92%;
+          width: 94%;
           bottom: 12px;
+          max-width: 100%;
         }
         .tips-text {
-          font-size: 0.7rem;
+          font-size: 0.75rem;
         }
         .tips-icon {
-          font-size: 1rem;
+          font-size: 1.1rem;
         }
         .tips-btn {
           width: 24px;
