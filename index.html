@@ -568,7 +568,7 @@
         background: rgba(10, 10, 18, 0.75);
         backdrop-filter: blur(14px);
         border-radius: 16px;
-        padding: 12px 20px;
+        padding: 12px 6px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -663,7 +663,7 @@
 
       @media (max-width: 480px) {
         .tips-card {
-          padding: 10px 14px;
+          padding: 10px 6px;
           min-width: auto;
           width: 92%;
           bottom: 12px;
@@ -2167,17 +2167,17 @@
       const SWIPE_THRESHOLD = 4000;
 
       const uiElements =
-        ".card, .best-card, .gameover-screen button, .start-btn, .action-icon, .pause-overlay, .gameover-screen";
-      document.querySelectorAll(uiElements).forEach((el) => {
-        el.addEventListener("touchstart", (e) => {
-          isTouchingGameArea = false;
-          e.stopPropagation();
-        });
-        el.addEventListener("touchend", (e) => {
-          isTouchingGameArea = true;
-          e.stopPropagation();
-        });
-      });
+  ".card, .best-card, .gameover-screen button, .start-btn, .action-icon, .pause-overlay, .gameover-screen, .tips-card";
+document.querySelectorAll(uiElements).forEach((el) => {
+  el.addEventListener("touchstart", (e) => {
+    isTouchingGameArea = false;
+    e.stopPropagation();
+  });
+  el.addEventListener("touchend", (e) => {
+    isTouchingGameArea = true;
+    e.stopPropagation();
+  });
+});
 
       window.addEventListener("touchstart", (e) => {
         const isOnUI = e.target.closest(uiElements);
